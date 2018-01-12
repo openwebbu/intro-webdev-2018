@@ -102,6 +102,7 @@ body {
 }
 
 /* Features */
+
 #features {
     margin-top: 20px;
 
@@ -131,4 +132,86 @@ body {
 
 .feature img {
     height: 100px;
+}
+
+/* Making things responsive */
+@media (max-width: 768px) {
+}
+
+@media (max-width: 650px) {
+    #navbar .links {
+        display: none;
+    }
+
+    #features {
+        flex-direction: column;
+    }
+
+    #features .feature {
+        flex: auto;
+    }
+
+    #navbar #brand {
+        left: 20px;
+    }
+
+    #menu-btn {
+        display: block !important;
+    }
+}
+
+@media (max-width: 425px) {
+    
+}
+
+/* Hidden menu */
+
+.hidden-menu-container {
+    height: 100%;
+    position: absolute;
+    right: 20px;
+}
+
+#menu-btn {
+    /* menu button is only visible if the links are hidden */
+    display: none;
+
+    /* Styling the button */
+    color: black;
+    font-size: 26px;
+    
+    /* Vertically centering the button */
+    line-height: 26px;
+    margin: 17px 0;
+    transform: translateY(-3px)
+}
+
+.hidden-menu-container #hidden-menu {
+    display: none;
+
+    position: absolute;
+    bottom: -67px;
+    right: -1px;
+
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.2);
+
+    flex-direction: column;
+}
+
+.hidden-menu-container #hidden-menu.shown {
+    display: flex;
+}
+
+.hidden-menu-container #hidden-menu .link {
+    margin: 5px 10px;
+}
+
+.hidden-menu-container #hidden-menu #close-btn {
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    transform: translateY(-3px);
+    margin-left: auto;
 }
