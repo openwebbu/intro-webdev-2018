@@ -106,104 +106,22 @@ This is what that looks like:
 
 <img src="./doc/responsive/features-fixed.png" width="40%">
 
-The menu is still messed up but the changes I implemented are a little bit more complex that requires more CSS and a little bit of Javascript. To sum up the changes I made, at 650px breakpoint, I hid the the links and instead added a [hambuger button](https://en.wikipedia.org/wiki/Hamburger_button) that opens a menu when it's clicked. You can headover to our [responsive branch](https://github.com/openwebbu/intro-webdev-2018/tree/responsive) of this workshop and see what changes I added to the CSS and JS.
+The menu is still messed up but the changes I implemented are a little bit more complex that requires more CSS and a little bit of Javascript. To sum up the changes I made, at 650px breakpoint, I hid the the links and instead added a [hambuger button](https://en.wikipedia.org/wiki/Hamburger_button) that opens a menu when it's clicked. You can headover to the [responsive branch](https://github.com/openwebbu/intro-webdev-2018/tree/responsive) of this workshop and see what changes I added to the CSS and JS.
 
-For all the lazy people here's the gist of what I did.
+If you are really curious about what I did and want to know more, shoot Open Web BU an [email](mailto:openweb@bu.edu).
 
-styles.css
-```css
-@media (max-width: 650px) {
-    #navbar .links {
-        display: none;
-    }
+But basically, you now know most of what it takes to exponentially improve the user experience of your website. Yay!
 
-    #navbar #brand {
-        left: 20px;
-    }
+## Transitions and Animations
 
-    #menu-btn {
-        display: block !important;
-    }
-}
-/* Hidden menu */
+Depending on time, we may have had a little bit of time to touch on transitions. If we did, great, if not, great. Either way, we did not touch on everything there is about making your website more interactive.
 
-.hidden-menu-container {
-    height: 100%;
-    position: absolute;
-    right: 20px;
-}
+Animations and transitions can bring your website to life and simply changing the color of a button when a user hovers on it can indicate to the user that a box on the website can be clicked or dragged.
 
-#menu-btn {
-    /* menu button is only visible if the links are hidden */
-    display: none;
+**Basically, interactivity is not necessary but will improve the user experience.**
 
-    /* Styling the button */
-    color: black;
-    font-size: 26px;
-    
-    /* Vertically centering the button */
-    line-height: 26px;
-    margin: 17px 0;
-    transform: translateY(-3px)
-}
+#### Transitions
+As the word implies, transitions are used to transition from one state to another. A button on a website might be one "state" and when it is clicked on, it transitions to another "state."
 
-.hidden-menu-container #hidden-menu {
-    display: none;
-
-    position: absolute;
-    bottom: -67px;
-    right: -1px;
-
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.2);
-
-    flex-direction: column;
-}
-
-.hidden-menu-container #hidden-menu.shown {
-    display: flex;
-}
-
-.hidden-menu-container #hidden-menu .link {
-    margin: 5px 10px;
-}
-
-.hidden-menu-container #hidden-menu #close-btn {
-    font-size: 25px;
-    width: 25px;
-    height: 25px;
-    transform: translateY(-3px);
-    margin-left: auto;
-}
-```
-
-index.js
-```javascript
-window.onload = () => {
-    const menuBtn = document.getElementById('menu-btn')
-    const closeBtn = document.getElementById('close-btn')
-    const hiddenMenu = document.getElementById('hidden-menu')
-    menuBtn.addEventListener('click', () => {
-        hiddenMenu.classList.add('shown')
-    })
-
-    closeBtn.addEventListener('click', () => {
-        hiddenMenu.classList.remove('shown')
-    })
-}
-```
-
-index.html
-```html
-<!-- Inside of #navbar -->
- <div class="hidden-menu-container">
-    <button id="menu-btn">&#9776;</button>
-    <div id="hidden-menu">
-        <button id="close-btn">&#215;</button>
-        <a class="link" href="#">Home</a>
-        <a class="link" href="#">About</a>
-        <a class="link" href="#">Contact</a>
-    </div>
-</div>
-```
+<p data-height="265" data-theme-id="dark" data-slug-hash="xpJmev" data-default-tab="result" data-user="shonihei" data-embed-version="2" data-pen-title="xpJmev" class="codepen">See the Pen <a href="https://codepen.io/shonihei/pen/xpJmev/">xpJmev</a> by Sho Nihei (<a href="https://codepen.io/shonihei">@shonihei</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
