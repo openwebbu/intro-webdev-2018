@@ -122,3 +122,72 @@ Animations and transitions can bring your website to life and simply changing th
 
 #### Transitions
 As the word implies, transitions are used to transition from one state to another. A button on a website might be one "state" and when it is clicked on, it transitions to another "state."
+
+Here's an example:
+![hover hover](./doc/transitions/hover-example.gif)
+
+and here's the CSS for it:
+```css
+#box {
+    /* Just some basic styling stuff */
+    color: white;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+
+    background-color: blue;
+}
+
+#box:hover {
+    background-color: purple;
+}
+```
+
+(It doesn't matter a whole lot here but you might be curious about **:hover** selector in the above code. This is referred to as "pseudo-element" and is very useful once you start making complex websites. Read about it [here](https://www.w3schools.com/css/css_pseudo_elements.asp))
+
+As you can see, when the cursor is outside of the box, it is in its "rest" state. When the cursor is "hovering" (above the box), it is in its "hover" state and the background color changes to purple.
+
+In the above example, the change in background color happens instantly. Declaring a transition in CSS allows us to customize this behavior.
+
+By adding the below CSS code to the box, we can smooth out the color change:
+
+```css
+#box {
+    ...
+
+    transition: background-color 1s ease-in-out;
+}
+```
+
+![hover transition](./doc/transitions/hover-w-transition.gif)
+
+Let's breakdown the new code into pieces.
+
+- **transition** is the CSS attribute we're using, nothing scary here.
+- **background-color** is a CSS attribute. In this context, we're declaring which CSS attribute the transition should get applied to. If you have multiple attributes that are changing (e.g. background-color, color, height, width and so on) and you want to just apply one transition to all of them then you can use the keyword **"all"** here.
+- **1s** is how long the transition should take to complete. Typically, 1 second transition is too long but I exaggerated it for the sake of education. 0.2s to 0.5s is recommended.
+- **ease-in-out** is what is called an "easing function." Easing functions specify the rate of change over time. When you start driving, you don't instantly accelerate to max speed and instantly come to a halt. In real life, change happens gradually. Easing functions allow you to specify this behavior. There's about 30 different easing functions and you can see them in action [here](http://easings.net/).
+
+If easing function is something that you don't really care about (and you really shouldn't until you're at the final stages of your development...) then you can omit the easing function parameter and leave it at:
+
+```css
+#box {
+    ...
+
+    transition: background-color 1s;
+}
+```
+
+By default, transition has a linear easing function which means that the transition will occur in constant time.
+
+#### Animations
+I can't think of an easy way to explain the difference between transitions and animations so here's a quote from [stackoverflow](https://stackoverflow.com/questions/20586143/css-animation-vs-transition).
+
+> A transition **is an animation**, just one that is performed between two distinct states - i.e. a start state and an end state. Like a drawer menu, the start state could be open and the end state could be closed, or vice versa.
+<br /><br />
+If you want to perform something that **does not** specifically involve a start state and an end state, or you need more fine grain control over the keyframes in a transition, then you've got to use an animation.
+
+The above quote sums it up perfectly. 
