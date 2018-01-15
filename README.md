@@ -122,6 +122,3 @@ Animations and transitions can bring your website to life and simply changing th
 
 #### Transitions
 As the word implies, transitions are used to transition from one state to another. A button on a website might be one "state" and when it is clicked on, it transitions to another "state."
-
-<p data-height="265" data-theme-id="dark" data-slug-hash="xpJmev" data-default-tab="result" data-user="shonihei" data-embed-version="2" data-pen-title="xpJmev" class="codepen">See the Pen <a href="https://codepen.io/shonihei/pen/xpJmev/">xpJmev</a> by Sho Nihei (<a href="https://codepen.io/shonihei">@shonihei</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
