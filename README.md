@@ -190,4 +190,109 @@ I can't think of an easy way to explain the difference between transitions and a
 <br /><br />
 If you want to perform something that **does not** specifically involve a start state and an end state, or you need more fine grain control over the keyframes in a transition, then you've got to use an animation.
 
-The above quote sums it up perfectly. 
+Essentially, use transitions when you want to control the change in appearance of a HTML element (like a button) between multiple states (rest, hover, clicked, dragged, etc) and use animations when you just want something the appearance of an element to change regardless of its state.
+
+It might be easier to practice rather than trying to memorize the definitions.
+
+Here's the basic workflow of creating and applying an animation:
+
+1. name and create a new keyframe.
+2. using the "animation" CSS attribute, apply the newly created keyframes to an element.
+
+#### Keyframes
+"keyframes" is another [at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule) that you will use to define an animation. It allows you to create a complex animation by writing minimal amount of code.
+
+It might look like this:
+```css
+@keyframes spin {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+```
+
+In the above code, we defined an animation called **spin** and just like the name implies, the animation will spin an element in the Z axis.
+
+In keyframes, 0% indicates the very beginning of the animation and 100% indicates the end of the animation. As long as the percentages you specify in the keyframes are within 0% to 100%, you can add any number of style changes as you like.
+
+So the below code would behave exactly the same as the previous example:
+
+```css
+@keyframes spin {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    25% {
+        transform: rotateZ(90deg);
+    }
+    50% {
+        transform: rotateZ(180deg);
+    }
+    75% {
+        transform: rotateZ(270deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+```
+
+The cool thing about keyframes is that you only need to specify when style changes happen. CSS is smart enough to fill the blanks for you. In the above example, we are specting an object to spin in the same direction and at the same rate throughout the entire animation. That's why specifying 0% and 100% is sufficient.
+
+In the above examples, we only used the CSS attribute called "transform" which lets you move, rotate and scale html elements. But you can pair and match more CSS attributes to make a complex animation. Here's one keyframes I created for one of my projects!
+
+```css
+@keyframes expandBounce {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 20px 0 rgba(235, 107, 86, 0);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px 0 rgba(235, 107, 86, 1);
+    }
+    100% {
+        transform: scale(1.15);
+        box-shadow: 0 0 20px 0 rgba(235, 107, 86, 1);
+    }
+}
+```
+
+#### Animation CSS Attribute
+**animation** CSS property is used to actually apply the animation to some element. It is actually a shorthand various CSS attributes related to animations. This is how using animation attribute is used:
+
+```css
+.box {
+    animation: spin 1.5s ease-in-out forwards;
+}
+```
+
+Here, we're assigning keyframes we named "spin" to elements with a class of "box."
+- **animation** is the CSS attribute
+- **spin** is the name of the @keyframes we defined
+- **1.5s** is the duration of the animation
+- **ease-in-out** is the easing function
+- **forwards** is what's referred to as fill-mode. It specifies what your element should do when the animation is not playing. "forwards" means that your element will retain the style values from the last keyframe. "backwards" on the other hand implies that your element will revert the style values back to its original values. Read about it more [here](https://www.w3schools.com/cssref/css3_pr_animation-fill-mode.asp).
+
+If the shorthand way of declaring the animation attribute is too confusing for you then here are all the CSS attributes you can define individually.
+
+
+```css
+.box {
+    animation-name: spin;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-in-out; 
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    /* animation-play-state: running; */
+}
+```
+
+**animation-play-state** can be pretty much ignored unless you're trying to control animations with Javascript which is why it's commented out in the code block above!
+
+Creating animations is personally my favorite part of frontend development but don't get carried away! Make sure the core parts of your website is functioning properly before getting distracted by cool animations.
